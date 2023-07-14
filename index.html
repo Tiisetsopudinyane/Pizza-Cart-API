@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="pizza.css">
+    <script src="cart.js"></script>
+
+</head>
+
+<body>
+
+    <div x-data="pizzaCart">
+    <div x-data="{open:false}">
+        <div class="container">
+            <div class="innerContainer">
+                <img src="images/pizza24.png">
+            <div class="contain"><h1 x-text='title'></h1></div>
+            </div>
+            <div class="innerContainer">
+                <div class="contain icon"><button class="bcolor" @click="open=!open"><i class="fa fa-cart-plus fa-2x icon" aria-hidden="true"></i></button></div>
+            <div class="contain username"><h3 x-text="username"></h3></div> 
+            </div>
+        </div>
+        <hr>
+        <br>
+        <div>
+            <!-- <h2>PIZZA CART API</h2> -->
+            <h4 class="message" x-text="message">Message here</h4>
+
+            <table class="table" id="table" x-show="open">
+                <tr>
+                    <th>Flavour</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                </tr>
+                <template x-for="pizza in cartPizzas">
+                    <tr>
+                        <td x-text="pizza.flavour"></td>
+                        <td x-text="pizza.size"></td>
+                        <td x-text="pizza.price">37.88</td>
+                        <td>
+                            <button x-on:click="addPizzaToCart(pizza.id)" class="btn1">+</button>
+                            <span x-text="pizza.qty"></span>
+                            <button x-on:click="removePizzaFromCart(pizza.id)" class="btn1">-</button>
+                        </td>
+                        <td x-text="pizza.total"></td>
+                    </tr>
+                </template>
+
+                <tr>
+                    <td colspan="4">Total</td>
+                    <td>R <span x-text="cartTotal"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i> Pay now</td>
+                    <td>
+                        <input x-model="paymentAmount" type="text">
+                    </td>
+                    <td colspan="2"><button x-on:click="payForCart()" class="btn1">Pay</button></td>
+                </tr>
+                
+            </table>
+
+        </div>
+    
+
+        <div class="pizzas">
+            
+            <h2 class="i"><span>Pizza</span>-Menu</h2>
+            <template x-for="pizza in pizzas">
+                <div class="card">
+                    <div class="pizza"><img  src="/images/424487.jpg"></div>
+                    <div class="pizza text">
+                        <h2 x-text="pizza.flavour"></h2>
+                        <h4 x-text="pizza.size"></h4>
+                        <!-- <span x-text="pizza.type"></span> -->
+                        <h4>R<span x-text="pizza.price"></span></h4>
+                    </div>
+                    <div class="pizza">
+                        <button class="btn add" x-on:click="[addPizzaToCart(pizza.id),open=true,document.getElementById('table').scrollIntoView()]">Add to cart</button>
+                    </div>
+                </div>
+           </template>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <h3>Contacts :</h3>
+           <p><i class="fa fa-phone" aria-hidden="true"> </i> Phone: 021 000 1111</p>
+           <p></a><i class="fa fa-facebook-official" aria-hidden="true"> </i> Facebook</a></p>
+           <p><a><i class="fa fa-instagram" aria-hidden="true"> </i> Instagram</a></p>
+           <p><a><i class="fa fa-envelope" aria-hidden="true"> </i> pizzasam@pizzahunt.com</a></p>
+        </div>
+        <div class="footer f2">
+            <h3><i class="fa fa-home" aria-hidden="true"> </i> ADDRESS :</h3>
+            <p>12983 sam street</p>
+            <p>Beyville</p>
+            <p>Lancaster</p>
+            <p>Azania</p>
+        </div>
+  </footer>
+</body>
+</html>

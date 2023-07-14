@@ -1,0 +1,191 @@
+html {
+    scroll-behavior: smooth;
+   }
+body{
+    background-color:rgb(247, 179, 32);
+    min-height: 100%;
+    padding:0 2em 0 2em;
+    position: relative;
+    margin: 0;
+}
+h1{
+    text-align: center;
+}
+.pizza{
+    flex: 1;
+}
+hr{
+    margin: 1em;
+    border-color: rgb(255, 255, 255);
+}
+.container{
+    background-color: rgb(255, 174, 0);
+    background: linear-gradient(360deg,rgb(247, 181, 41)0%,rgb(240, 141, 11),rgb(255, 174, 0));
+}
+.contain{
+    color: #fafafa;
+    flex: 1;
+    padding: .25em;
+}
+.icon{
+    float: right;
+    padding: .5em;
+}
+.bcolor{
+    background-color: unset;
+    border: 1px solid black;
+    border-radius: 3em;
+    float: right;
+}
+.bcolor:hover{
+background-color:rgb(255, 255, 255) ;
+border-radius: 3em;
+border: 1px solid rgb(255, 255, 255);
+}
+.icon:hover{
+color: #f8ac08;
+}
+.username{
+    float: right;
+    padding: .5em;
+}
+.i{
+    text-align: center;
+    color: white;
+    font-style:oblique;
+}
+.i span{
+    color: black;
+}
+i{
+    color: #fafafa;
+  }
+  table{
+    width: 100%;
+  }
+table, th, td {
+            border: 1px solid rgb(255, 255, 255);
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            text-align: left;
+            text-align: center;
+        }
+.card{
+    text-align: center;
+    background: linear-gradient(360deg,rgb(247, 181, 41)0%,rgb(240, 141, 11),rgb(255, 174, 0));
+    margin: 3em;
+    width: 100%;
+}
+.text{
+    text-align: center;
+}
+h2{
+    line-height: .75em;
+}
+h4 span{
+    color: rgb(255, 255, 255);
+}
+.container{
+    display: flex;
+}
+h4{
+    color:white
+}
+.message{
+    color:rgb(255, 0, 0);
+}
+.btn,.btn1{
+    background-color: rgb(114, 173, 6);
+    color:black;
+    font-weight: bold;
+    border-color:  rgb(173, 143, 6);
+    border: 0;
+    font-weight: bold;
+    border-radius: .5em;
+    height: 2em;
+    width:auto;
+    margin: 1em;
+}
+.btn:hover,.btn1:hover{
+    color: white;
+    background-color: rgb(4, 117, 4);
+}
+.innerContainer{
+    flex: 1;
+}
+.add{
+    padding: auto;
+    float: right;
+    width: auto;
+    height: auto;
+}
+footer{
+    bottom: 0;
+    flex: 1;
+    background-color: rgb(197, 184, 7);
+    font-style: italic;
+    font-weight:bold;
+    line-height: .5em;
+    border-radius: 0.5em;
+}
+img{
+    width: 180px;
+    height: 120px;
+    float: left;
+}
+
+.footer{
+    padding:1em;
+    margin: 1em;
+}
+@media (min-width:300px) {
+    
+    .footer{
+        flex:1;
+    }
+    .pizza{
+        display: block;
+    }
+    .container{
+        flex: 1;
+    }
+    .card{
+        background-color: rgb(240, 141, 11);
+        width: 90%;
+        padding: .1em;
+        line-height: .5em;
+        text-align: center;
+        display: flex;
+        margin: 3em;
+        flex: 1;
+    }
+}
+@media (min-width:960px) {
+    .container{
+        display: flex;}
+    footer{
+        display: flex;
+    }
+    .pizza{
+        display: block;
+    }
+    .card{
+        background-color: rgb(240, 141, 11);
+        width:90%;
+        text-align: center;
+        margin: 3em;
+        display: flex;
+        padding: .1em;
+        line-height: .5em;
+    }
+    
+    img{
+        width: 180px;
+        float: left;
+    }
+}
