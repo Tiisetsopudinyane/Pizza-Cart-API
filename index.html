@@ -17,6 +17,13 @@
 
     <div x-data="pizzaCart">
     <div x-data="{open:false}">
+        <div>
+            <span class="user"> username:<input x-model="username" class="txtbox" placeholder="enter username" type="text"></span>
+            <button class="btn1" x-on:click="login" x-show="!cartId">login</button>
+            <button class="btn1" x-on:click="logout" x-show="username && cartId ">logout</button>
+            </div>
+            <div x-cloak x-show="cartId">
+            <span class="user">cart code: <span x-text="cartId"></span></span>
         <div class="container">
             <div class="innerContainer">
                 <img src="images/pizza24.png">
@@ -47,9 +54,9 @@
                         <td x-text="pizza.size"></td>
                         <td x-text="pizza.price">37.88</td>
                         <td>
-                            <button x-on:click="addPizzaToCart(pizza.id)" class="btn1">+</button>
+                            <button @click="addPizzaToCart(pizza.id)" class="btn1">+</button>
                             <span x-text="pizza.qty"></span>
-                            <button x-on:click="removePizzaFromCart(pizza.id)" class="btn1">-</button>
+                            <button @click="removePizzaFromCart(pizza.id)" class="btn1">-</button>
                         </td>
                         <td x-text="pizza.total"></td>
                     </tr>
@@ -77,8 +84,9 @@
             <h2 class="i"><span>Pizza</span>-Menu</h2>
             <template x-for="pizza in pizzas">
                 <div class="card">
-                    <div class="pizza"><img  src="images/424487.jpg"></div>
+                    <div class="pizza"><img x-bind:src="images(pizza)" height="200px"></div>
                     <div class="pizza text">
+                        
                         <h2 x-text="pizza.flavour"></h2>
                         <h4 x-text="pizza.size"></h4>
                         <!-- <span x-text="pizza.type"></span> -->

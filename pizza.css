@@ -11,6 +11,15 @@ body{
 h1{
     text-align: center;
 }
+.user{
+    color: white;
+    font-weight: bold;
+}
+.txtbox{
+    border-radius: .5em;
+    border-color: #f1b738;
+    height: 1.5em;
+}
 .pizza{
     flex: 1;
 }

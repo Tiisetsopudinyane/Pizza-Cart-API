@@ -12,6 +12,21 @@ document.addEventListener("alpine:init", () => {
           message:'',
           pizza: '',
           image:'',
+          login() {
+            if (this.username.length > 2) {
+                localStorage['username'] = this.username;
+                this.createCart();
+            } else {
+                alert('username is too short');
+            }
+        },
+        logout() {
+            if (confirm('Do you want to logout?')) {
+                this.username = '';
+                this.cartId = '';
+                localStorage['cartId'] = '';
+                localStorage['username'] = '';
+            }},
           getCart() {
               const getCarturl = `https://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`
               return axios.get(getCarturl);
@@ -82,6 +97,23 @@ document.addEventListener("alpine:init", () => {
                   });
 
           },
+          createCart() {
+            if (!this.username) {
+                //this.cartId = 'No username to create cart for'
+                return;
+            }
+            const cartId = localStorage['cartId'];
+            if (cartId) {
+                this.cartId = cartId;
+            } else {
+                const createCartURL = `https://pizza-api.projectcodex.net/api/pizza-cart/create?username=${this.username}`
+                return axios.get(createCartURL)
+                    .then(result => {
+                        this.cartId = result.data.cart_code;
+                        localStorage['cartId'] = this.cartId;
+                    })
+            }
+        },
           payForCart() {
             // alert("Pay now : "+ this.paymentAmount)
             this
@@ -105,13 +137,8 @@ document.addEventListener("alpine:init", () => {
                 }
         });},
           
-          images(){
-            count=27;
-            while(count>=1){
-              this.image=`/images/${count}.png`;
-              count--;
-            }
-            return this.image;
+          images(pizza){
+            return `images/${pizza.size}.png`;
           }
 
       }
