@@ -36,8 +36,8 @@ document.addEventListener("alpine:init", () => {
 
               return axios.post('https://pizza-api.projectcodex.net/api/pizza-cart/add', {
                   "cart_code": this.cartId,
-                  "pizza_id": PizzaId
-
+                  "pizza_id": PizzaId,
+                   
               });
           },
           removePizza(PizzaId) {
@@ -71,7 +71,6 @@ document.addEventListener("alpine:init", () => {
 
           },
 
-
           init() {
               axios
                   .get('https://pizza-api.projectcodex.net/api/pizzas')
@@ -80,7 +79,6 @@ document.addEventListener("alpine:init", () => {
                   });
 
               this.showCartData();
-              this.images();
           },
           addPizzaToCart(PizzaId) {
               // alert(PizzaId)
@@ -122,7 +120,14 @@ document.addEventListener("alpine:init", () => {
                 if ( result.data.status == 'failure') {
                     this.message = result.data.message;
                     setTimeout(() => this.message= '', 3000);
-                } else {
+                } 
+                else if(this.cartPizzas.length===0){
+                    this.message='you cant make purchase with an empty cart';
+                    setTimeout(() => {
+                        this.message='';
+                        }, 3000);
+                }
+                else {
                 this.message = 'Payment Received, Enjoy!';
 
                 setTimeout(() => {
@@ -139,6 +144,9 @@ document.addEventListener("alpine:init", () => {
           
           images(pizza){
             return `images/${pizza.size}.png`;
+          },
+          toFixd(amount){
+            return amount.toFixed(2);
           }
 
       }
