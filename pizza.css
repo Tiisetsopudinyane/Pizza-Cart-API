@@ -4,7 +4,7 @@ html {
 body{
     background-color:rgb(247, 179, 32);
     min-height: 100%;
-    padding:0 2em 0 2em;
+    padding:0 .5em 0 .5em;
     position: relative;
     margin: 0;
 }
@@ -21,7 +21,14 @@ h1{
     height: 1.5em;
 }
 .pizza{
-    flex: 1;
+    display:flex;
+}
+.pizzas{
+    display: block;
+    margin: 3em;
+}
+.text{
+    display: block;
 }
 hr{
     margin: 1em;
@@ -88,10 +95,20 @@ table, th, td {
 .card{
     text-align: center;
     background: linear-gradient(360deg,rgb(247, 181, 41)0%,rgb(240, 141, 11),rgb(255, 174, 0));
-    margin: 3em;
+    padding: 1em;
     width: 100%;
     flex: 1;
     display: flex;
+    margin: 3em;
+}
+.card1{
+    text-align: center;
+    background: linear-gradient(360deg,rgb(247, 181, 41)0%,rgb(240, 141, 11),rgb(255, 174, 0));
+    padding: 1em;
+    width: 100%;
+    flex: 1;
+    display: block;
+    margin: 3em;
 }
 .text{
     text-align: center;
@@ -166,9 +183,6 @@ img{
     }
     .container{
         flex: 1;
-        display: block;
-    }
-    .pizza{
         display: block;
     }
     .card{

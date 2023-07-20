@@ -17,13 +17,16 @@
 
     <div x-data="pizzaCart">
     <div x-data="{open:false}">
-        <div>
+        <div x-clock>
             <span class="user"> username:<input x-model="username" class="txtbox" placeholder="enter username" type="text"></span>
             <button class="btn1" x-on:click="login" x-show="!cartId">login</button>
-            <button class="btn1" x-on:click="logout" x-show="username && cartId ">logout</button>
+            <button class="btn1" x-on:click="logout" x-show=" cartId">logout</button>
+        </div>
+            <!--<div x-cloak x-show="cartId">-->
+            <div x-show="cartId && username">
+                <div><span class="user">Username: <span x-text="username"></span></span></div>
+            <div><span class="user">cart code: <span x-text="cartId"></span></span></div>
             </div>
-            <div x-cloak x-show="cartId">
-            <span class="user">cart code: <span x-text="cartId"></span></span>
         <div class="container">
             <div class="innerContainer">
                 <img src="images/pizza24.png">
@@ -38,9 +41,9 @@
         <br>
         <div>
             <!-- <h2>PIZZA CART API</h2> -->
-            <h4 class="message" x-text="message">Message here</h4>
+            <h4 class="message" x-text="message"></h4>
 
-            <table class="table" id="table" x-show="open">
+            <table class="table" id="table" x-show="cartTotal>0 || open">
                 <tr>
                     <th>Flavour</th>
                     <th>Size</th>
@@ -78,7 +81,25 @@
 
         </div>
     
-
+        <div>
+            <div class="pizzas container">
+                <template x-for="pizza in showFeaturedpizzas.pizzas">
+                    <div class="card">
+                        <div class="pizza"><img x-bind:src="images(pizza)" height="200px"></div>
+                        <div class="pizza text">
+                            <h2 x-text="pizza.flavour"></h2>
+                            <h4 x-text="pizza.size"></h4>
+                            <!-- <span x-text="pizza.type"></span> -->
+                            <h4>R<span x-text="pizza.price"></span></h4>
+                        </div class="pizza"> <!-- call the ID of the pizza -->
+                            <button class="btn add"
+                                x-on:click="addPizzaToCart(pizza.id)"><strong>BUY</strong></button>
+                        </div>
+                    </div>
+                </template>
+    
+            </div>
+        </div>
         <div class="pizzas">
             
             <h2 class="i"><span>Pizza</span>-Menu</h2>
@@ -94,6 +115,9 @@
                     </div>
                     <div class="pizza">
                         <button class="btn add" x-on:click="[addPizzaToCart(pizza.id),open=true,document.getElementById('table').scrollIntoView()]">Add to cart</button>
+                    </div>
+                    <div class="pizza">
+                        <button class="btn add" @click="postfeaturedPizzas(pizza.id)">feature</button>
                     </div>
                 </div>
            </template>
