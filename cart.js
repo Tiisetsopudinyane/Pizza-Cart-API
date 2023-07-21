@@ -158,6 +158,14 @@ document.addEventListener("alpine:init", () => {
           if (result.data.status == "failure") {
             this.message = result.data.message;
             setTimeout(() => (this.message = ""), 3000);
+          }
+          else if (this.cartPizzas.length==0){
+            this.message = 'Your must add Pizza(s) to your cart first';
+
+            setTimeout(() => {
+              this.message = '';
+
+            }, 3000);
           } else {
             const change = this.paymentAmount - this.cartTotal;
 
