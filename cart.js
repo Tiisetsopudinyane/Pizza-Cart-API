@@ -119,7 +119,6 @@ document.addEventListener("alpine:init", () => {
           const cartData = result.data;
           this.cartPizzas = cartData.pizzas;
           this.cartTotal = cartData.total.toFixed(2);
-          // alert(this.cartTotal);
         });
       },
 
@@ -128,7 +127,6 @@ document.addEventListener("alpine:init", () => {
           .get("https://pizza-api.projectcodex.net/api/pizzas")
           .then((result) => {
             this.pizzas = result.data.pizzas;
-            //console.log(">>" + this.pizzas);
           });
 
         const id = localStorage.getItem("cartID");
@@ -141,19 +139,16 @@ document.addEventListener("alpine:init", () => {
         }
       },
       addPizzaToCart(PizzaId) {
-        // alert(PizzaId)
         this.addPizza(PizzaId).then(() => {
           this.showCartData();
         });
       },
       removePizzaFromCart(PizzaId) {
-        // alert(PizzaId)
         this.removePizza(PizzaId).then(() => {
           this.showCartData();
         });
       },
       payForCart() {
-        // alert("Pay now : "+ this.paymentAmount)
         this.pay(this.paymentAmount).then((result) => {
           if (result.data.status == "failure") {
             this.message = result.data.message;
@@ -178,7 +173,6 @@ document.addEventListener("alpine:init", () => {
               this.cartPizzas = [];
               this.cartTotal = 0.0;
               this.cartId = "";
-              // this.createCart();
               this.paymentAmount = 0.0;
             }, 3000);
           }
@@ -188,8 +182,6 @@ document.addEventListener("alpine:init", () => {
         axios.get(`https://pizza-api.projectcodex.net/api/pizza-cart/username/${this.username}`)
           .then((result) => {
             this.userCartContent = result.data;
-            //             console.log(this.userCartContent);
-            // console.log(result.data)
           })
       },
       images(pizza) {
